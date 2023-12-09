@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog CMS Homepage</title>
+    <link rel="stylesheet" href="/frontend/css/styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="dashboard.html" id="dashboard-link">Dashboard</a></li>
+                <li><a href="auth.html" id="login-link">Login</a></li>
+                <li><a href="#" id="logout-link" style="display:none;">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <h1>Welcome to the Blog CMS</h1>
+
+    <!-- Posts container where blog posts will be loaded dynamically -->
+    <div id="posts"></div>
+
+    <script>
+        // Script to check if user is logged in and toggle login/logout links
+        document.addEventListener('DOMContentLoaded', () => {
+            const loginLink = document.getElementById('login-link');
+            const logoutLink = document.getElementById('logout-link');
+            const dashboardLink = document.getElementById('dashboard-link');
+
+            // Placeholder for actual check
+            const isLoggedIn = localStorage.getItem('token'); // Simplified example
+
+            if (isLoggedIn) {
+                loginLink.style.display = 'none';
+                logoutLink.style.display = 'block';
+                dashboardLink.style.display = 'block';
+            } else {
+                loginLink.style.display = 'block';
+                logoutLink.style.display = 'none';
+                dashboardLink.style.display = 'none';
+            }
+
+            logoutLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                // Placeholder for logout functionality
+                localStorage.removeItem('token');
+                window.location.reload();
+            });
+        });
+    </script>
+</body>
+</html>
